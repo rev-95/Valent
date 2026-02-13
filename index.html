@@ -16,11 +16,13 @@
         .btn-wrap { margin-top: 30px; height: 60px; position: relative; }
         .btn { padding: 12px 35px; font-size: 1.1rem; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: 0.3s; }
         #yesBtn { background: var(--rose); color: white; box-shadow: 0 5px 15px rgba(255, 75, 110, 0.3); }
-        #noBtn { background: #eee; color: #999; position: absolute; transition: 0.1s; }
+        #noBtn { background: #eee; color: #999; position: absolute; transition: 0.1s; z-index: 5; }
 
         #success-page { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; flex-direction: column; justify-content: center; align-items: center; z-index: 100; text-align: center; padding: 20px; }
-        .love-text { max-width: 500px; font-size: 1.6rem; line-height: 1.6; color: #333; font-family: 'Dancing Script', cursive; margin-top: 20px; }
+        .love-text { max-width: 550px; font-size: 1.5rem; line-height: 1.6; color: #333; font-family: 'Dancing Script', cursive; margin-top: 20px; }
+        .signature { margin-top: 25px; font-family: 'Montserrat', sans-serif; color: #888; font-size: 0.9rem; font-style: italic; opacity: 0; animation: fadeIn 2s forwards; animation-delay: 8s; }
         
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .heart-particle { position: absolute; pointer-events: none; animation: fly 4s linear forwards; }
         @keyframes fly { 0% { transform: translateY(100vh) scale(0); opacity: 1; } 100% { transform: translateY(-10vh) scale(1.5); opacity: 0; } }
     </style>
@@ -34,7 +36,7 @@
     <div class="container" id="mainCard">
         <h1 class="name-banner">Janika Dombrowski</h1>
         <p class="question">
-            It’s been a year since we first met, and looking back, I knew then what I know even more clearly now: <b>you are my perfect match.</b><br><br>
+            It’s been a year since our paths crossed, and I knew back then what I know even more clearly now: <b>you are my perfect match.</b><br><br>
             Will you be my Valentine?
         </p>
         <div class="btn-wrap">
@@ -45,8 +47,12 @@
 
     <div id="success-page">
         <div style="font-size: 4rem;">🎷</div>
-        <h1 style="color: var(--rose); font-size: 2.5rem; margin: 10px 0;">Forever Yes!</h1>
+        <h1 style="color: var(--rose); font-size: 2.5rem; margin: 10px 0;">Great choice! ❤️</h1>
         <div class="love-text" id="typewriter"></div>
+        <div class="signature">
+            — Yours truly, Revanth<br>
+            (Your most romantic, dangerously handsome, and occasionally annoying boyfriend)
+        </div>
     </div>
 
     <script>
@@ -59,10 +65,9 @@
             btn.style.position = 'fixed';
         }
 
-        const message = "One year ago, our story began, and I’m so incredibly excited for the journey ahead of us. I know I can be annoying sometimes—okay, maybe a lot—but I hope you always know how deeply I care for you. You make my life complete, Janika.";
+        const message = "One year ago, our story began, and I’m so incredibly excited for the journey ahead of us. I know I can be a handful sometimes—okay, I'm definitely annoying—but I hope you always know how deeply I care for you. You make my life complete, Janika. I can't wait for our future together.";
 
         function showSuccess() {
-            // Play Music
             const music = document.getElementById('jazzMusic');
             music.play();
 
