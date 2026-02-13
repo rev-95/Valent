@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Valentine 💕</title>
-<style>
-    body {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Will You Be My Valentine? 💕</title>
+    <style>
+      * {
         margin: 0;
-        font-family: 'Segoe UI', cursive;
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+        min-height: 100vh;
         overflow: hidden;
         text-align: center;
         color: white;
-    }
+      }
 
-    .page {
+      .page {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -22,123 +28,171 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding: 20px;
         transition: opacity 1s ease;
-    }
+      }
 
-    img {
+      .page img {
         max-width: 80%;
         max-height: 50vh;
         border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         margin-bottom: 20px;
-    }
+        object-fit: cover;
+      }
 
-    h1 {
+      h1 {
         font-size: 2.5rem;
-        margin-bottom: 20px;
-        text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-    }
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        line-height: 1.6;
+      }
 
-    button {
+      .button-container {
+        display: flex;
+        gap: 20px;
+        position: relative;
+        height: 60px;
+      }
+
+      button {
         padding: 15px 30px;
-        margin: 10px;
         border: none;
         border-radius: 30px;
         font-size: 1.2rem;
         cursor: pointer;
-        transition: 0.3s;
-    }
+        transition: all 0.3s ease;
+        font-weight: 600;
+      }
 
-    #yesBtn {
+      #yesBtn {
         background-color: #ff4e88;
         color: white;
-    }
+      }
 
-    #noBtn {
+      #yesBtn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 5px 20px rgba(255, 78, 136, 0.4);
+      }
+
+      #noBtn {
         background-color: white;
         color: #ff4e88;
         position: absolute;
-    }
+      }
 
-    .hidden {
+      #noBtn:hover {
+        transform: scale(1.05);
+      }
+
+      .hidden {
         opacity: 0;
         pointer-events: none;
-    }
+      }
 
-    .heart {
-        position: absolute;
+      .heart {
+        position: fixed;
         font-size: 20px;
-        animation: float 6s linear infinite;
+        animation: float 6s linear forwards;
         color: #fff;
-    }
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
 
-    @keyframes float {
-        0% { transform: translateY(100vh) scale(1); opacity: 1; }
-        100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
-    }
-</style>
-</head>
-<body>
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-10vh) scale(1.5);
+          opacity: 0;
+        }
+      }
 
-<!-- Page 1 -->
-<div class="page" id="page1">
-    <img src="photos/photo1.jpg" alt="Us ❤️">
-    <h1>Will you be my Valentine? 💕</h1>
-    <div>
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        button {
+          padding: 12px 24px;
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Page 1: Question -->
+    <div class="page" id="page1">
+      <img
+        src="https://via.placeholder.com/400x300?text=Your+Photo+Here"
+        alt="A photo of us together"
+      />
+      <h1>Will you be my Valentine? 💕</h1>
+      <div class="button-container">
         <button id="yesBtn">Yes 💖</button>
         <button id="noBtn">No 🙈</button>
+      </div>
     </div>
-</div>
 
-<!-- Page 2 -->
-<div class="page hidden" id="page2">
-    <img src="photos/photo2.jpg" alt="Our Love ❤️">
-    <h1>
-        You just made me the happiest man alive 💕<br><br>
-        From this moment, every heartbeat whispers your name.<br>
-        Every sunrise reminds me how lucky I am to have you.<br><br>
-        I choose you today.<br>
-        I'll choose you tomorrow.<br>
+    <!-- Page 2: Affirmation -->
+    <div class="page hidden" id="page2">
+      <img
+        src="https://via.placeholder.com/400x300?text=Our+Love+Story"
+        alt="A cherished memory of us"
+      />
+      <h1>
+        You just made me the happiest person alive 💕<br /><br />
+        From this moment, every heartbeat whispers your name.<br />
+        Every sunrise reminds me how lucky I am to have you.<br /><br />
+        I choose you today.<br />
+        I'll choose you tomorrow.<br />
         I'll choose you forever. ❤️
-    </h1>
-</div>
+      </h1>
+    </div>
 
-<script>
-    const noBtn = document.getElementById("noBtn");
-    const yesBtn = document.getElementById("yesBtn");
-    const page1 = document.getElementById("page1");
-    const page2 = document.getElementById("page2");
+    <script>
+      const noBtn = document.getElementById('noBtn');
+      const yesBtn = document.getElementById('yesBtn');
+      const page1 = document.getElementById('page1');
+      const page2 = document.getElementById('page2');
+      let heartsActive = false;
 
-    // Make No button run away
-    noBtn.addEventListener("mouseover", () => {
+      // Make "No" button run away on hover
+      noBtn.addEventListener('mouseover', () => {
         const x = Math.random() * (window.innerWidth - 100);
         const y = Math.random() * (window.innerHeight - 50);
-        noBtn.style.left = x + "px";
-        noBtn.style.top = y + "px";
-    });
+        noBtn.style.left = x + 'px';
+        noBtn.style.top = y + 'px';
+      });
 
-    // When Yes is clicked
-    yesBtn.addEventListener("click", () => {
-        page1.classList.add("hidden");
-        page2.classList.remove("hidden");
-        createHearts();
-    });
+      // Handle "Yes" button click
+      yesBtn.addEventListener('click', () => {
+        page1.classList.add('hidden');
+        page2.classList.remove('hidden');
+        if (!heartsActive) {
+          createHearts();
+          heartsActive = true;
+        }
+      });
 
-    function createHearts() {
-        setInterval(() => {
-            const heart = document.createElement("div");
-            heart.classList.add("heart");
-            heart.innerHTML = "💖";
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.fontSize = (Math.random() * 20 + 20) + "px";
-            document.body.appendChild(heart);
+      // Create floating hearts animation
+      function createHearts() {
+        const heartInterval = setInterval(() => {
+          const heart = document.createElement('div');
+          heart.classList.add('heart');
+          heart.innerHTML = '💖';
+          heart.style.left = Math.random() * 100 + 'vw';
+          heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+          document.body.appendChild(heart);
 
-            setTimeout(() => {
-                heart.remove();
-            }, 6000);
+          // Remove heart after animation completes
+          setTimeout(() => {
+            heart.remove();
+          }, 6000);
         }, 300);
-    }
-</script>
-
-</body>
+      }
+    </script>
+  </body>
 </html>
